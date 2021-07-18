@@ -43,26 +43,26 @@ export function Home() {
             <ul>
                 {moviesSW.map(movie => (
                     <li key={movie.episode_id}>
-                        <p> <h2>{movie.title}</h2> <br />
-                        <strong>Diretor:</strong> {movie.director} <br />
-                        <strong>Resumo:</strong> {movie.opening_crawl} <br />
-                        <strong>Naves:</strong> {/* Criar lista de nome das naves a partir da url passada em movie.starships */} 
+                        <p> 
+                            <h2>{movie.title}</h2> <br />
+                            <strong>Diretor:</strong> {movie.director} <br />
+                            <strong>Resumo:</strong> {movie.opening_crawl} <br />
+                            <strong>Naves:</strong> {/* Criar lista de nome das naves a partir da url passada em movie.starships */} 
                          
+                            {(() => {
+                                let st = ['']; 
 
-                        {(() => {
-                            let st = ['']; 
-
-                            starships.map(star => {
-                                for(const naveUrl of movie.starships) {
-                                    if(naveUrl === star.url) {
-                                        st.push(star.name + ', ');
+                                starships.map(star => {
+                                    for(const naveUrl of movie.starships) {
+                                        if(naveUrl === star.url) {
+                                            st.push(star.name + ', ');
+                                        }
                                     }
-                                }
-                            })
-                                
+                                })      
                             
-                            return st;
-                        })()}
+                                return st;
+                            })()}
+
                         </p>
                     </li>
                 ))}

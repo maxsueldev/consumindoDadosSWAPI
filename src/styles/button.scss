@@ -1,0 +1,17 @@
+button {
+    background-color: #FFED5A;
+    width: 120px;
+    height: 30px;
+    border-radius: 25px;
+    border-style: none;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    &:hover {
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+        font-weight: bold;
+    }
+}

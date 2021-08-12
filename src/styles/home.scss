@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.containerImagem {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    flex-wrap: wrap;
+    background-image: url('../assets/images/background-home.jpg');
+    background-repeat: round;
+
+    img {
+        width: 443px;
+        height: 443px;
+    }
+
+    .containerLogo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .break {
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    .containerButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

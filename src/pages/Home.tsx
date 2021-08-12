@@ -1,72 +1,36 @@
-import { useEffect, useState } from "react";
-import axios from 'axios';
+import Logo from '../assets/images/logo.png';
+import '../styles/home.scss';
+
+import { Button } from '../components/Button';
+import { Link } from 'react-router-dom';
 
 export function Home() {
-    const [moviesSW, setMoviesSW] = useState<any[]>([]);
-    const [starships, setStarships] = useState<any[]>([]);
-    let movieStarships = [''];
-
-    useEffect(function() {
-        fetch('https://swapi.dev/api/films/')
-        .then(filmsResponse => filmsResponse.json())
-        .then(completeFilmsResponse => {
-          setMoviesSW(completeFilmsResponse.results);
-        }) 
-
-        fetch('https://swapi.dev/api/starships/')
-        .then(starshipsResponse => starshipsResponse.json())
-        .then(completeStarshipsResponse => {
-          setStarships(completeStarshipsResponse.results);
-        }) 
-    }, []);
-
-    // useEffect(function() {
-        
-    // }, []);
-    
-
-    // for(const [film, filmValues] of Object.entries(moviesSW)) {
-    //     console.log(filmValues.starships);
-    //     filmValues.starships.map(ship => {
-    //         console.log(ship);
-    //     })
-    //     for(const [starshipKey, starshipValues] of Object.entries(starships)) {
-    //         console.log(starshipValues.url);
-    //     }
-    //     // if(filmsValues.starships == st)       
-    // }
- 
     return (
-        <div>
-            <h1>Lista de filmes Star Wars (swapi)</h1>
-        
-            <ul>
-                {moviesSW.map(movie => (
-                    <li key={movie.episode_id}>
-                        <p> 
-                            <h2>{movie.title}</h2> <br />
-                            <strong>Diretor:</strong> {movie.director} <br />
-                            <strong>Resumo:</strong> {movie.opening_crawl} <br />
-                            <strong>Naves:</strong> {/* Criar lista de nome das naves a partir da url passada em movie.starships */} 
-                         
-                            {(() => {
-                                let st = ['']; 
-
-                                starships.map(star => {
-                                    for(const naveUrl of movie.starships) {
-                                        if(naveUrl === star.url) {
-                                            st.push(star.name + ', ');
-                                        }
-                                    }
-                                })      
-                            
-                                return st;
-                            })()}
-
-                        </p>
-                    </li>
-                ))}
-            </ul>
-        </div> 
-    );
+        <div className="containerImagem">
+            <div className="containerLogo">
+                <img src={Logo} alt="Logo do Star Wars com cor amarela" />
+            </div>
+            <div className="break"></div>
+            <div className="containerButtons">
+                <Link to="/filmes">
+                    { <Button title="Filmes" /> }
+                </Link>
+                <Link to="/personagens">
+                    { <Button title="Personagens" /> }
+                </Link>
+                <Link to="/planetas">   
+                    { <Button title="Planetas" /> }
+                </Link>
+                <Link to="/especies">
+                    { <Button title="Espécies" /> }
+                </Link>
+                <Link to="/naves">
+                    { <Button title="Naves" /> }
+                </Link>
+                <Link to="/veiculos">    
+                    { <Button title="Veículos" /> }
+                </Link>
+            </div>
+        </div>
+    )
 }
